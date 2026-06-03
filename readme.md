@@ -4,3 +4,5 @@ Como parte da evolução, foi implementada a funcionalidade que permite usuário
 
 ### Arquivos Alterados / Criados
 * `components/table.php` (Alterado): Adiciona a caluna "Ações" e o link dinâmico para a exclusão passando o ID via parâmetro GET.
+* `excluir.php` (Criado): Arquivo responsável por validar a sessão, receber o ID da URL, executar a query SQL correspondente e redirecionar o usuário.
+
