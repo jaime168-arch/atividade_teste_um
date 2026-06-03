@@ -1,0 +1,1 @@
+## Funcionalidade de exclusão do Usuário (CRUD - Delete)
