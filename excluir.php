@@ -26,4 +26,14 @@ if(isset($_GET['id'])) {
         </script>";    
     } else {
         //Exibe o erro caso falhe o banco de dados
-}
+        echo "<script>
+        alert('Erro ao excluir usuário.');
+        window.location.href = 'home.php';
+        </script>";
+    } 
+   } else {
+    // Se tentarem acessar o arquivo sem a ID, volta para a página inicial
+    header("Location: home.php");
+    exit();
+} 
+?>
