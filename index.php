@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Define um usuário e senha fictícios para teste
     $usuario_correto = "admin";
-    $senha_correta = "1234";
+    $senha_correta = "123";
 
     // Valida se os campos estão vazios ou se os dados estão incorretos
     if (empty($usuario_digitado) || empty($senha_digitada)) {
