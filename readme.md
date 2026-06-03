@@ -9,3 +9,5 @@ Como parte da evolução, foi implementada a funcionalidade que permite usuário
 ### Trechos importantes do Código
 
 **Link de Exclusão com confirmção (table.php):**
+```php
+<a href='excluir.php?id=". $linha['id'] ."' onclick=\"return confirm('Tem certeza?');\">Excluir</a>
