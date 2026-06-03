@@ -1,37 +1,44 @@
 <?php
-// Inicializa a variável de erro vazia para não dar aviso de "variável indefinida"
-$erro = "";
+    // Inicia a sessão para permitir o controle de autenticação entre as páginas.
+    session_start();
 
-// Verifica se o formulário foi enviado via método POST
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Obtém os dados digitados (usando o operador uncoalescing '??' para evitar erros caso estejam vazios)
-    $usuario_digitado = $_POST['usuario'] ?? '';
-    $senha_digitada = $_POST['senha'] ?? '';
+    // Carrega a conexão com o banco de dados usada na validação do login.
+    include("infra/db/connect.php");
 
-    // Define um usuário e senha fictícios para teste
-    $usuario_correto = "admin";
-    $senha_correta = "123";
+    // Trata o envio do formulário de login.
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    // Valida se os campos estão vazios ou se os dados estão incorretos
-    if (empty($usuario_digitado) || empty($senha_digitada)) {
-        $erro = "<span style='color: red;'>Por favor, preencha todos os campos!</span>";
-    } elseif ($usuario_digitado === $usuario_correto && $senha_digitada === $senha_correta) {
-        // Se acertar, você poderia redirecionar o usuário, mas aqui vamos apenas exibir sucesso
-        echo "<script>alert('Login efetuado com sucesso!');</script>";
-    } else {
-        // Se errar, preenche a variável que você usou no HTML
-        $erro = "<span style='color: red;'>Usuário ou senha incorretos!</span>";
+        // Recebe os dados digitados pelo usuário no formulário.
+        $usuario = $_POST["usuario"];
+        $senha = $_POST["senha"];
+        
+        // Consulta o banco para verificar se existe um registro com as credenciais informadas.
+        $sql = "SELECT * FROM usuarios WHERE usuario = '$usuario' AND senha = '$senha'";
+
+        $resultado = $conn->query($sql);
+
+        // Se encontrar ao menos um registro, o usuário é autenticado e redirecionado para a área interna.
+        if ($resultado->num_rows > 0){
+            $_SESSION["usuario"] = $usuario;
+            header("Location: public/home.php");
+            exit();
+        }else{
+            // Mensagem exibida quando as credenciais não correspondem a nenhum usuário cadastrado.
+            $erro = "Usuário ou senha inválidos!";
+        }
     }
-}
 ?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>área de Login</title>
 </head>
 <body>
-    <h1>Sitema de Login Simples</h1>
+    <h1>Sistema de Login Simples</h1>
 
+    <!-- Formulário responsável por enviar as credenciais para validação. -->
     <form method="POST">
         <label>Usuário:</label>
         <input type="text" name="usuario">
@@ -40,13 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" name="senha">
         <br>
         <?php
-        
+            // Exibe a mensagem de erro quando o login falha.
             if(isset($erro)){
                 echo $erro;
             };
 
-            // esse erro serve ara alguma coisa
-        
+            // Variável reservada para informar falhas de autenticação ao usuário.
         ?>
         <br>
         <button type="submit">Entrar</button>
