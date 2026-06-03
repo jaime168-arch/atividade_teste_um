@@ -17,5 +17,13 @@ if(isset($_GET['id'])) {
     // Cria o query SQL para deletar um usuário específico
     $sqlDelete = "DELETE FROM usuarios WHERE id = $id_excluir";
 
-    //Execução do query
+    //Execução do query]
+    if($conn->query($sqlDelete) === TRUE) {
+        // Redireciona para a pagina principal com aviso de sucesso
+        echo "<script>
+        alert ('Usuário excluído com sucesso!');
+        window.location.href = 'home.php';
+        </script>";    
+    } else {
+        //Exibe o erro caso falhe o banco de dados
 }
