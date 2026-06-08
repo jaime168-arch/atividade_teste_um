@@ -10,7 +10,23 @@ Sistema web desenvolvido para fins acadêmicos com o objetivo de gerenciar o cad
 * HTML5 e CSS3
 
 ### Estrutura de Pastas
-[Cole aqui a árvore de pastas que mostrei ali em cima]
+ATIVIDADE_TESTE_UM-2/
+│
+├── infra/
+│   └── db/
+│       ├── connect.php          <-- Arquivo de conexão com o banco de dados
+│       └── script.sql           <-- Script de criação do banco e tabelas (DML/DDL)
+│
+├── public/                      <-- Arquivos do painel interno do sistema
+│   ├── components/              
+│   │   └── table.php            <-- Tabela de listagem dos usuários cadastrados
+│   ├── editar.php               <-- Tela e lógica de edição de registros (Update)
+│   ├── excluir.php              <-- Lógica silenciosa de exclusão (Delete)
+│   ├── home.php                 <-- Painel principal (Formulário de Cadastro)
+│   └── logout.php               <-- Lógica de encerramento de sessão
+│
+├── index.php                    <-- Página de entrada principal (Tela de Login)
+└── readme.md                    <-- Documentação completa do projeto
 
 ### Explicação das Funcionalidades
 * **Autenticação:** Sistema de login que valida credenciais direto no banco de dados e cria sessões seguras.
