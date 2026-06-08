@@ -9,20 +9,17 @@
     </tr>
 
     <?php
-    
-    // Cria a query SQL para selecionar TODOS os dados e todas as linhas da tabela 'usuarios'
+    // Consulta todos os registros da tabela para exibição na interface.
     $sqlTodosUsuarios = "SELECT * FROM usuarios";
 
-    // Executa a query no banco de dados e armazena o conjunto de dados brutos na variável
+    // Executa a consulta usando a conexão recebida da página principal.
     $resultadoTodosUsuarios = $conn->query($sqlTodosUsuarios);
 
-    // O loop 'while' vai continuar rodando enquanto houver linhas para ler do banco de dados.
-    // A cada repetição, o 'fetch_assoc()' pega a próxima linha e a transforma em um array chamado $linha
+    // Percorre cada linha retornada e monta uma linha da tabela HTML.
     while($linha = $resultadoTodosUsuarios->fetch_assoc()){
 
-    // o fetch assoc
+    // O fetch_assoc transforma o resultado em um array associativo.
 
-        // Imprime uma nova linha da tabela HTML (<tr>) preenchida dinamicamente com os dados daquela linha do banco
         echo "  <tr>
                     <td>". $linha['id'] . "</td>
                     <td>". $linha['usuario'] . "</td>
