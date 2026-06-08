@@ -1,18 +1,35 @@
-## Funcionalidade de Exclusão de Usuários (CRUD - Delete)
+# Nome do Projeto: [Digite o nome aqui, ex: Sistema de Gestão de Usuários M1]
 
-Como parte da evolução do projeto, foi implementada a funcionalidade que permite remover usuários cadastrados diretamente através da interface do sistema.
+### Objetivo do Sistema
+Sistema web desenvolvido para fins acadêmicos com o objetivo de gerenciar o cadastro de credenciais de usuários, aplicando regras completas de um ecossistema CRUD.
 
-### Arquivos Alterados / Criados
-* `components/table.php` (Alterado): Adicionada a coluna **Ações** e o link dinâmico para a exclusão, passando o ID do usuário via parâmetro `GET`.
-* `excluir.php` (Criado): Arquivo backend responsável por validar a sessão do administrador, receber o ID pela URL, executar a query SQL correspondente de remoção e redirecionar o usuário com segurança.
+### Tecnologias Utilizadas
+* PHP 8.x
+* MySQL (SGBD)
+* Extensão MySQLi para integração Banco-Aplicação
+* HTML5 e CSS3
 
----
+### Estrutura de Pastas
+[Cole aqui a árvore de pastas que mostrei ali em cima]
 
-### Trechos Importantes do Código
+### Explicação das Funcionalidades
+* **Autenticação:** Sistema de login que valida credenciais direto no banco de dados e cria sessões seguras.
+* **Cadastro (Create):** Inserção de novos usuários com validação.
+* **Listagem (Read):** Exibição de dados com máscaras de segurança na senha.
+* **Edição (Update):** Recuperação de dados via GET e atualização via POST.
+* **Exclusão (Delete):** Remoção física com dupla confirmação.
 
-#### 1. Link de Exclusão com Confirmação (`components/table.php`)
-Foi adicionada uma trava de segurança em JavaScript (`onclick`) para evitar que um usuário seja deletado por um clique acidental.
-```php
-<td> 
-    <a href='excluir.php?id=". $linha['id'] ."' onclick=\"return confirm('Tem certeza que deseja excluir este usuário?');\">Excluir</a>
-</td>
+### Melhorias Implementadas
+1. **Modularização de Código:** Isolamento de Header, Footer e Trava de Sessão na pasta `includes/`.
+2. **Confirmação de Exclusão:** Implementada trava preventiva contra cliques acidentais.
+3. [Insira aqui a Melhoria 1 que você escolheu]
+4. [Insira aqui a Melhoria 2 que você escolheu]
+5. [Insira aqui a Melhoria 3 que você escolheu]
+6. [Insira aqui a Melhoria 4 que você escolheu]
+
+### Instruções para Execução
+1. Clone o repositório.
+2. Importe o script SQL no seu MySQL (XAMPP, WAMP ou Docker).
+3. Ajuste as credenciais no arquivo `infra/db/connect.php` se necessário.
+4. Mova o projeto para a pasta `htdocs` ou `www`.
+5. Acesse no navegador através de `http://localhost/meu-projeto/public/index.php`.
